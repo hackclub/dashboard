@@ -19,8 +19,6 @@ SCHEDULER.every '5s', :first_in => 0 do |job|
 
   most_recent  = commits.max_by { |c| c.commit.author.date }.commit
 
-  short = { author: most_recent.author.name, message: most_recent.message,
-            url: most_recent.url }
-
-  send_event('most_recent_commit', { value: short })
+  send_event('github', { text: most_recent.message,
+                         moreinfo: "By #{ most_recent.author.name }" })
 end
