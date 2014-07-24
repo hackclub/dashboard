@@ -10,7 +10,7 @@ if not GITHUB_CLIENT_ID.nil? or GITHUB_CLIENT_SECRET.nil?
                                client_secret: GITHUB_CLIENT_SECRET)
 end
 
-SCHEDULER.every '5s', :first_in => 0 do |job|
+SCHEDULER.every '30s', :first_in => 0 do |job|
   repos = client.repos('hackedu')
 
   commits = Array.new
